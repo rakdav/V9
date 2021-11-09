@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using V9.Controller;
+using V9.View;
 
 namespace V9
 {
@@ -14,7 +16,9 @@ namespace V9
         [STAThread]
         static void Main()
         {
-            
+            MainView mainView = new MainView();
+            mainView.Visible = false;
+
         }
     }
 }

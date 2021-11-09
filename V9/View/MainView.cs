@@ -9,24 +9,28 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using V9.Controller;
 using V9.Model;
+using V9.View;
 
 namespace V9
 {
-    public partial class Form1 : Form,IMainView
+    public partial class MainView : Form,IMainView
     {
-        public Form1()
+        MainController controller;
+        public MainView()
         {
             InitializeComponent();
         }
 
         public void AddMatirial(Material material)
         {
-            IMaterialView materialView=new IMaterialView
+            MaterialView materialView = new MaterialView();
+            materialView.Show(material);
+            this.Controls.Add(materialView);
         }
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            this.Controls.Clear();
         }
 
         public void RemoveMaterial(Material material)
@@ -34,9 +38,9 @@ namespace V9
             throw new NotImplementedException();
         }
 
-        public void SetController(MainController controller)
+        public void SetController(MainController _controller)
         {
-            throw new NotImplementedException();
+            controller = _controller;
         }
 
         public void UpdateWithChangedMatirial(Material material)

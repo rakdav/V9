@@ -20,16 +20,33 @@ namespace V9.View
             InitializeComponent();
         }
 
-        public MaterialType MaterialTypeProperties { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Title { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public double MinCount { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public double? CountInStock { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public ICollection<Supplier> Supliers { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string MaterialTypeProperties 
+        {
+            get { return this.labelType.Text; }
+            set { this.labelType.Text = value; }
+        }
+        public string Title {
+            get { return this.labelTitle.Text; }
+            set { this.labelTitle.Text = value; }
+        }
+        public double MinCount {
+            get { return double.Parse(this.minCount.Text); }
+            set { this.labelType.Text = value.ToString(); }
+        }
+        public double? CountInStock
+        {
+            get { return double.Parse(this.amount.Text); }
+            set { this.amount.Text = value.ToString(); }
+        }
+        public ICollection<Supplier> Supliers { 
+            get; 
+            set; 
+        }
 
         public void Clear()
         {
             imageMaterial.Image = null;
-            labelTypeAndName.Text =string.Empty;
+            labelType.Text =string.Empty;
             minCount.Text = string.Empty;
             labelSuplier.Text = string.Empty;
             amount.Text = string.Empty;
@@ -43,7 +60,8 @@ namespace V9.View
         public void Show(Material material)
         {
             imageMaterial.Image =Image.FromFile(material.Image);
-            labelTypeAndName.Text = material.Title;
+            labelType.Text = material.MaterialTypeID;
+            labelTitle.Text=material.Title;
             minCount.Text = material.MinCount.ToString();
             labelSuplier.Text = "";
             amount.Text = material.CountInStock.ToString();

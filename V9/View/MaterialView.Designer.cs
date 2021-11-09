@@ -36,7 +36,8 @@ namespace V9.View
             this.panel3 = new System.Windows.Forms.Panel();
             this.labelSuplier = new System.Windows.Forms.Label();
             this.minCount = new System.Windows.Forms.Label();
-            this.labelTypeAndName = new System.Windows.Forms.Label();
+            this.labelType = new System.Windows.Forms.Label();
+            this.labelTitle = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageMaterial)).BeginInit();
             this.panel2.SuspendLayout();
@@ -51,7 +52,6 @@ namespace V9.View
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(139, 126);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // imageMaterial
             // 
@@ -81,9 +81,10 @@ namespace V9.View
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.labelTitle);
             this.panel3.Controls.Add(this.labelSuplier);
             this.panel3.Controls.Add(this.minCount);
-            this.panel3.Controls.Add(this.labelTypeAndName);
+            this.panel3.Controls.Add(this.labelType);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(139, 0);
             this.panel3.Name = "panel3";
@@ -102,20 +103,31 @@ namespace V9.View
             // minCount
             // 
             this.minCount.AutoSize = true;
-            this.minCount.Location = new System.Drawing.Point(26, 46);
+            this.minCount.Location = new System.Drawing.Point(26, 45);
             this.minCount.Name = "minCount";
             this.minCount.Size = new System.Drawing.Size(142, 13);
             this.minCount.TabIndex = 1;
             this.minCount.Text = "Минимальное количество:";
             // 
-            // labelTypeAndName
+            // labelType
             // 
-            this.labelTypeAndName.AutoSize = true;
-            this.labelTypeAndName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelTypeAndName.Location = new System.Drawing.Point(26, 19);
-            this.labelTypeAndName.Name = "labelTypeAndName";
-            this.labelTypeAndName.Size = new System.Drawing.Size(0, 16);
-            this.labelTypeAndName.TabIndex = 0;
+            this.labelType.AutoSize = true;
+            this.labelType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelType.Location = new System.Drawing.Point(26, 19);
+            this.labelType.Name = "labelType";
+            this.labelType.Size = new System.Drawing.Size(121, 16);
+            this.labelType.TabIndex = 0;
+            this.labelType.Text = "Тип материала";
+            // 
+            // labelTitle
+            // 
+            this.labelTitle.AutoSize = true;
+            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTitle.Location = new System.Drawing.Point(153, 19);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(119, 16);
+            this.labelTitle.TabIndex = 3;
+            this.labelTitle.Text = "Наименование";
             // 
             // MaterialView
             // 
@@ -145,6 +157,7 @@ namespace V9.View
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label labelSuplier;
         private System.Windows.Forms.Label minCount;
-        private System.Windows.Forms.Label labelTypeAndName;
+        private System.Windows.Forms.Label labelType;
+        private System.Windows.Forms.Label labelTitle;
     }
 }

@@ -12,7 +12,7 @@ namespace V9.Controller
         void SetController(MaterialController controller);
         void Clear();
         void Show(Material material);
-        MaterialType MaterialTypeProperties { get; set; }
+        string MaterialTypeProperties { get; set; }
         string Title { get; set; }
         double MinCount { get; set; }
         double? CountInStock { get; set; }

@@ -23,7 +23,7 @@ namespace V9.Controller
         {
             this.view.Title = material.Title;
             this.view.Supliers = material.Supplier;
-            this.view.MaterialTypeProperties = material.MaterialType;
+            this.view.MaterialTypeProperties = material.MaterialTypeID;
             this.view.MinCount = material.MinCount;
             this.view.CountInStock = material.CountInStock;
         }
@@ -32,7 +32,7 @@ namespace V9.Controller
         {
             material.Title=this.view.Title;
             material.Supplier=this.view.Supliers;
-            material.MaterialType=this.view.MaterialTypeProperties;
+            material.MaterialTypeID=this.view.MaterialTypeProperties;
             material.MinCount= this.view.MinCount;
             material.CountInStock= this.view.CountInStock;
         }

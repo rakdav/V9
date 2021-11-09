@@ -1,7 +1,7 @@
 ﻿
 namespace V9
 {
-    partial class Form1
+    partial class MainView
     {
         /// <summary>
         /// Обязательная переменная конструктора.
