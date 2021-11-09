@@ -64,6 +64,7 @@
     <Compile Include="Model\AgentType.cs" />
     <Compile Include="Model\Material.cs" />
     <Compile Include="Model\MaterialCountHistory.cs" />
+    <Compile Include="Model\MaterialSupplier.cs" />
     <Compile Include="Model\MaterialType.cs" />
     <Compile Include="Model\ModelDB.cs" />
     <Compile Include="Model\Product.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="View\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
@@ -116,6 +118,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\picture.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

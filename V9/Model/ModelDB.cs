@@ -17,6 +17,7 @@ namespace V9.Model
         public virtual DbSet<AgentType> AgentType { get; set; }
         public virtual DbSet<Material> Material { get; set; }
         public virtual DbSet<MaterialCountHistory> MaterialCountHistory { get; set; }
+        public virtual DbSet<MaterialSupplier> MaterialSupplier { get; set; }
         public virtual DbSet<MaterialType> MaterialType { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<ProductCostHistory> ProductCostHistory { get; set; }
@@ -58,9 +59,10 @@ namespace V9.Model
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Material>()
-                .HasMany(e => e.Supplier)
-                .WithMany(e => e.Material)
-                .Map(m => m.ToTable("MaterialSupplier").MapLeftKey("MaterialID").MapRightKey("SupplierID"));
+                .HasMany(e => e.MaterialSupplier)
+                .WithRequired(e => e.Material)
+                .HasForeignKey(e => e.MaterialID)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<MaterialType>()
                 .HasMany(e => e.Material)
@@ -94,6 +96,12 @@ namespace V9.Model
             modelBuilder.Entity<Supplier>()
                 .Property(e => e.INN)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Supplier>()
+                .HasMany(e => e.MaterialSupplier)
+                .WithRequired(e => e.Supplier)
+                .HasForeignKey(e => e.SupplierID)
+                .WillCascadeOnDelete(false);
         }
     }
 }

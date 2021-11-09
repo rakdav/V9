@@ -59,12 +59,32 @@ namespace V9.View
 
         public void Show(Material material)
         {
-            imageMaterial.Image =Image.FromFile(material.Image);
+
+            if (material.Image!=null)
+            {
+                System.IO.FileStream fs = new System.IO.FileStream(Environment.CurrentDirectory+material.Image, System.IO.FileMode.Open);
+                System.Drawing.Image img = System.Drawing.Image.FromStream(fs);
+                fs.Close();
+                imageMaterial.Image = img;
+            }
+            else
+            {
+                imageMaterial.Image = Properties.Resources.picture;
+            }
             labelType.Text = material.MaterialTypeID;
             labelTitle.Text=material.Title;
-            minCount.Text = material.MinCount.ToString();
-            labelSuplier.Text = "";
-            amount.Text = material.CountInStock.ToString();
+            minCount.Text +=material.MinCount.ToString();
+            string result = "";
+            using (ModelDB db = new ModelDB())
+            {
+                List<MaterialSupplier> list = db.MaterialSupplier.Where(p=>p.MaterialID.Equals(material.Title)).ToList();
+                foreach (var item in list)
+                {
+                    result += item.SupplierID + " ";
+                }
+            }
+            labelSuplier.Text = result;
+            amount.Text+= material.CountInStock.ToString();
         }
     }
 }

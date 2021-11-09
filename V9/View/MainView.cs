@@ -25,7 +25,7 @@ namespace V9
         {
             MaterialView materialView = new MaterialView();
             materialView.Show(material);
-            this.Controls.Add(materialView);
+            this.flowLayoutPanel1.Controls.Add(materialView);
         }
 
         public void Clear()
@@ -46,6 +46,11 @@ namespace V9
         public void UpdateWithChangedMatirial(Material material)
         {
             throw new NotImplementedException();
+        }
+
+        private void MainView_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
