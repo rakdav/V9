@@ -14,6 +14,5 @@ namespace V9.Controller
         void AddMatirial(Material material);
         void UpdateWithChangedMatirial(Material material);
         void RemoveMaterial(Material material);
-       
     }
 }

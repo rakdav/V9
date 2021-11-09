@@ -12,11 +12,10 @@ namespace V9.Controller
         void SetController(MaterialController controller);
         void Clear();
         void Show(Material material);
-        void UpdateView(Material material);
-        string MaterialType { get; set; }
+        MaterialType MaterialTypeProperties { get; set; }
         string Title { get; set; }
         double MinCount { get; set; }
-        double CountInStock { get; set; }
-        List<string> Supliers { get; set; }
+        double? CountInStock { get; set; }
+        ICollection<Supplier> Supliers { get; set; }
     }
 }
