@@ -31,7 +31,7 @@ namespace V9
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.materialFilter = new System.Windows.Forms.ComboBox();
             this.sortBy = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -46,7 +46,7 @@ namespace V9
             // panel1
             // 
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Controls.Add(this.comboBox2);
+            this.panel1.Controls.Add(this.materialFilter);
             this.panel1.Controls.Add(this.sortBy);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -55,24 +55,26 @@ namespace V9
             this.panel1.Size = new System.Drawing.Size(800, 50);
             this.panel1.TabIndex = 0;
             // 
-            // comboBox2
+            // materialFilter
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(667, 12);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 2;
+            this.materialFilter.FormattingEnabled = true;
+            this.materialFilter.Location = new System.Drawing.Point(667, 12);
+            this.materialFilter.Name = "materialFilter";
+            this.materialFilter.Size = new System.Drawing.Size(121, 21);
+            this.materialFilter.TabIndex = 2;
             // 
             // sortBy
             // 
             this.sortBy.FormattingEnabled = true;
             this.sortBy.Items.AddRange(new object[] {
+            "Выберите сортировку",
             "Наименование",
             "Остаток на складе",
             "Стоимость"});
             this.sortBy.Location = new System.Drawing.Point(530, 12);
             this.sortBy.Name = "sortBy";
             this.sortBy.Size = new System.Drawing.Size(121, 21);
+            this.sortBy.Sorted = true;
             this.sortBy.TabIndex = 1;
             this.sortBy.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -123,6 +125,7 @@ namespace V9
             this.radioSortAsc.TabStop = true;
             this.radioSortAsc.Text = "возр.";
             this.radioSortAsc.UseVisualStyleBackColor = true;
+            this.radioSortAsc.CheckedChanged += new System.EventHandler(this.radioSortAsc_CheckedChanged);
             // 
             // sortByDesc
             // 
@@ -134,6 +137,7 @@ namespace V9
             this.sortByDesc.TabStop = true;
             this.sortByDesc.Text = "убыв.";
             this.sortByDesc.UseVisualStyleBackColor = true;
+            this.sortByDesc.CheckedChanged += new System.EventHandler(this.sortByDesc_CheckedChanged);
             // 
             // MainView
             // 
@@ -158,7 +162,7 @@ namespace V9
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox materialFilter;
         private System.Windows.Forms.ComboBox sortBy;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;

@@ -76,5 +76,13 @@ namespace V9.Controller
                     _view.AddMatirial(_list[i]);
             }
         }
+        public void AddTypeOfMaterial()
+        {
+            using (ModelDB db=new ModelDB())
+            {
+                string[] typeMaterial = db.MaterialType.Select(p => p.Title).ToArray();
+                _view.addTypeMaterial(typeMaterial);
+            }
+        }
     }
 }

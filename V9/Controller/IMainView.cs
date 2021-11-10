@@ -16,5 +16,6 @@ namespace V9.Controller
         void AddLeftRight(string text);
         void UpdateWithChangedMatirial(Material material);
         void RemoveMaterial(Material material);
+        void addTypeMaterial(string[] material);
     }
 }

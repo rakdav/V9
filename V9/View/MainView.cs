@@ -21,6 +21,7 @@ namespace V9
         {
             InitializeComponent();
             n = 1;
+            sortBy.SelectedIndex = 0;
         }
 
         public void AddMatirial(Material material)
@@ -95,31 +96,53 @@ namespace V9
         {
 
         }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void SortMethod()
         {
-            if (sortBy.SelectedIndex == 0)
+            if (sortBy.SelectedIndex == 1)
             {
                 if (sortByDesc.Checked)
                     controller.SortByNameDesc();
                 else
                     controller.SortByName();
             }
-            else if (sortBy.SelectedIndex == 1)
+            else if (sortBy.SelectedIndex == 2)
             {
                 if (sortByDesc.Checked)
                     controller.SortByAmountDesc();
                 else
                     controller.SortByAmount();
             }
-            else
+            else if (sortBy.SelectedIndex == 3)
             {
                 if (sortByDesc.Checked)
                     controller.SortByCostDesc();
                 else
                     controller.SortByCost();
             }
-            controller.LoadView(n);
+            if (sortBy.SelectedIndex != 0)
+                controller.LoadView(n);
+        }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SortMethod();
+        }
+
+        private void sortByDesc_CheckedChanged(object sender, EventArgs e)
+        {
+            SortMethod();
+        }
+
+        private void radioSortAsc_CheckedChanged(object sender, EventArgs e)
+        {
+            SortMethod();
+        }
+
+        public void addTypeMaterial(string[] material)
+        {
+            foreach (string item in material)
+            {
+                materialFilter.Items.Add(item);
+            }          
         }
     }
 }
