@@ -31,14 +31,14 @@ namespace V9
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.sortByDesc = new System.Windows.Forms.RadioButton();
+            this.radioSortAsc = new System.Windows.Forms.RadioButton();
             this.materialFilter = new System.Windows.Forms.ComboBox();
             this.sortBy = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioSortAsc = new System.Windows.Forms.RadioButton();
-            this.sortByDesc = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -55,13 +55,51 @@ namespace V9
             this.panel1.Size = new System.Drawing.Size(800, 50);
             this.panel1.TabIndex = 0;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.sortByDesc);
+            this.groupBox1.Controls.Add(this.radioSortAsc);
+            this.groupBox1.Location = new System.Drawing.Point(370, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(149, 32);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Сортировка";
+            // 
+            // sortByDesc
+            // 
+            this.sortByDesc.AutoSize = true;
+            this.sortByDesc.Location = new System.Drawing.Point(89, 11);
+            this.sortByDesc.Name = "sortByDesc";
+            this.sortByDesc.Size = new System.Drawing.Size(53, 17);
+            this.sortByDesc.TabIndex = 1;
+            this.sortByDesc.TabStop = true;
+            this.sortByDesc.Text = "убыв.";
+            this.sortByDesc.UseVisualStyleBackColor = true;
+            this.sortByDesc.CheckedChanged += new System.EventHandler(this.sortByDesc_CheckedChanged);
+            // 
+            // radioSortAsc
+            // 
+            this.radioSortAsc.AutoSize = true;
+            this.radioSortAsc.Location = new System.Drawing.Point(7, 12);
+            this.radioSortAsc.Name = "radioSortAsc";
+            this.radioSortAsc.Size = new System.Drawing.Size(52, 17);
+            this.radioSortAsc.TabIndex = 0;
+            this.radioSortAsc.TabStop = true;
+            this.radioSortAsc.Text = "возр.";
+            this.radioSortAsc.UseVisualStyleBackColor = true;
+            this.radioSortAsc.CheckedChanged += new System.EventHandler(this.radioSortAsc_CheckedChanged);
+            // 
             // materialFilter
             // 
             this.materialFilter.FormattingEnabled = true;
+            this.materialFilter.Items.AddRange(new object[] {
+            "Все типы"});
             this.materialFilter.Location = new System.Drawing.Point(667, 12);
             this.materialFilter.Name = "materialFilter";
             this.materialFilter.Size = new System.Drawing.Size(121, 21);
             this.materialFilter.TabIndex = 2;
+            this.materialFilter.SelectedIndexChanged += new System.EventHandler(this.materialFilter_SelectedIndexChanged);
             // 
             // sortBy
             // 
@@ -84,6 +122,7 @@ namespace V9
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(258, 20);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // flowLayoutPanel1
             // 
@@ -103,41 +142,6 @@ namespace V9
             this.flowLayoutPanel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.flowLayoutPanel2.Size = new System.Drawing.Size(800, 48);
             this.flowLayoutPanel2.TabIndex = 2;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.sortByDesc);
-            this.groupBox1.Controls.Add(this.radioSortAsc);
-            this.groupBox1.Location = new System.Drawing.Point(370, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(149, 32);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Сортировка";
-            // 
-            // radioSortAsc
-            // 
-            this.radioSortAsc.AutoSize = true;
-            this.radioSortAsc.Location = new System.Drawing.Point(7, 12);
-            this.radioSortAsc.Name = "radioSortAsc";
-            this.radioSortAsc.Size = new System.Drawing.Size(52, 17);
-            this.radioSortAsc.TabIndex = 0;
-            this.radioSortAsc.TabStop = true;
-            this.radioSortAsc.Text = "возр.";
-            this.radioSortAsc.UseVisualStyleBackColor = true;
-            this.radioSortAsc.CheckedChanged += new System.EventHandler(this.radioSortAsc_CheckedChanged);
-            // 
-            // sortByDesc
-            // 
-            this.sortByDesc.AutoSize = true;
-            this.sortByDesc.Location = new System.Drawing.Point(89, 11);
-            this.sortByDesc.Name = "sortByDesc";
-            this.sortByDesc.Size = new System.Drawing.Size(53, 17);
-            this.sortByDesc.TabIndex = 1;
-            this.sortByDesc.TabStop = true;
-            this.sortByDesc.Text = "убыв.";
-            this.sortByDesc.UseVisualStyleBackColor = true;
-            this.sortByDesc.CheckedChanged += new System.EventHandler(this.sortByDesc_CheckedChanged);
             // 
             // MainView
             // 

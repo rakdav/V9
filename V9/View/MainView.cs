@@ -34,6 +34,7 @@ namespace V9
         public void Clear()
         {
             this.flowLayoutPanel1.Controls.Clear();
+            this.flowLayoutPanel2.Controls.Clear();
         }
 
         public void AddPage(int n)
@@ -143,6 +144,24 @@ namespace V9
             {
                 materialFilter.Items.Add(item);
             }          
+        }
+
+        private void materialFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (materialFilter.SelectedIndex != 0)
+                controller.filterBy(materialFilter.SelectedItem.ToString());
+            else controller.nofilter();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Length == 0)
+                controller.nofilter();
+            else controller.filterByName(textBox1.Text);
+        }
+        public void setTitle(int all,int otbor)
+        {
+            this.Text = "Черновик " + otbor + " из " + all;
         }
     }
 }

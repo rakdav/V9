@@ -14,10 +14,13 @@ namespace V9.Controller
         private IMainView _view;
         private IList<Material> _list;
         private int count;
+        private IList<Material> temp;
+        private int all, otbor;
         public MainController(IMainView view, IList<Material> list)
         {
             _view = view;
             _list = list;
+            temp = list;
             view.SetController(this);
             if(list.Count%15==0)
             {
@@ -31,6 +34,7 @@ namespace V9.Controller
 
         public void AddPagination()
         {
+            _view.Clear();
             for (int i = 0; i <= count+1; i++)
             {
                 if (i == 0) _view.AddLeftRight("<");
@@ -70,11 +74,55 @@ namespace V9.Controller
         public void LoadView(int n)
         {
             _view.Clear();
+            AddPagination();
+            _view.setTitle(temp.Count, _list.Count);
             for(int i=(n-1)*15;i<n*15;i++)
             {
                 if(i<_list.Count-1)
                     _view.AddMatirial(_list[i]);
             }
+        }
+        public void filterBy(string text)
+        {
+            _list=temp;
+            _list = _list.Where(u => u.MaterialTypeID.Equals(text)).ToList();
+            if (_list.Count % 15 == 0)
+            {
+                count = _list.Count / 15;
+            }
+            else
+            {
+                count = (_list.Count / 15) + 1;
+            }
+            LoadView(1);
+        }
+        public void filterByName(string text)
+        {
+            _list = temp;
+            _list = _list.Where(u => u.Title.StartsWith(text)).ToList();
+            if (_list.Count % 15 == 0)
+            {
+                count = _list.Count / 15;
+            }
+            else
+            {
+                count = (_list.Count / 15) + 1;
+            }
+            LoadView(1);
+        }
+        public void nofilter()
+        {
+            _list = temp;
+            count = _list.Count;
+            if (_list.Count % 15 == 0)
+            {
+                count = _list.Count / 15;
+            }
+            else
+            {
+                count = (_list.Count / 15) + 1;
+            }
+            LoadView(1);
         }
         public void AddTypeOfMaterial()
         {

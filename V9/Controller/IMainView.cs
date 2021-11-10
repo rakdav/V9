@@ -17,5 +17,6 @@ namespace V9.Controller
         void UpdateWithChangedMatirial(Material material);
         void RemoveMaterial(Material material);
         void addTypeMaterial(string[] material);
+        void setTitle(int all, int otbor);
     }
 }
