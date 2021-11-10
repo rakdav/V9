@@ -16,9 +16,11 @@ namespace V9
     public partial class MainView : Form,IMainView
     {
         MainController controller;
+        private int n;
         public MainView()
         {
             InitializeComponent();
+            n = 1;
         }
 
         public void AddMatirial(Material material)
@@ -46,13 +48,33 @@ namespace V9
             LinkLabel linkLabel = new LinkLabel();
             linkLabel.Text = text;
             linkLabel.Size = new Size(10, 50);
-            linkLabel.LinkClicked += this.addFiveMaterial;
+            if(text.Equals("<"))
+                linkLabel.LinkClicked += this.addLeftMaterial;
+            else
+                linkLabel.LinkClicked += this.addRightMaterial;
             this.flowLayoutPanel2.Controls.Add(linkLabel);
         }
         private void addFiveMaterial(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            int n = int.Parse((sender as LinkLabel).Text);
+            n = int.Parse((sender as LinkLabel).Text);
             controller.LoadView(n);
+        }
+
+        private void addLeftMaterial(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (n > 1)
+            {
+                n--;
+                controller.LoadView(n);
+            }
+        }
+        private void addRightMaterial(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (n < controller.getCount())
+            {
+                n++;
+                controller.LoadView(n);
+            }
         }
         public void RemoveMaterial(Material material)
         {
@@ -74,5 +96,30 @@ namespace V9
 
         }
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (sortBy.SelectedIndex == 0)
+            {
+                if (sortByDesc.Checked)
+                    controller.SortByNameDesc();
+                else
+                    controller.SortByName();
+            }
+            else if (sortBy.SelectedIndex == 1)
+            {
+                if (sortByDesc.Checked)
+                    controller.SortByAmountDesc();
+                else
+                    controller.SortByAmount();
+            }
+            else
+            {
+                if (sortByDesc.Checked)
+                    controller.SortByCostDesc();
+                else
+                    controller.SortByCost();
+            }
+            controller.LoadView(n);
+        }
     }
 }

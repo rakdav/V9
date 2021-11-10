@@ -38,7 +38,35 @@ namespace V9.Controller
                 else _view.AddPage(i);
             }
         }
+        public int getCount()
+        {
+            return count;
+        }
+        public void SortByName()
+        {
+            _list=_list.OrderBy(u => u.Title).ToList();
+        }
+        public void SortByNameDesc()
+        {
+            _list = _list.OrderByDescending(u => u.Title).ToList();
+        }
+        public void SortByAmount()
+        {
+            _list=_list.OrderBy(u => u.CountInStock).ToList();
+        }
 
+        public void SortByAmountDesc()
+        {
+            _list = _list.OrderByDescending(u => u.CountInStock).ToList();
+        }
+        public void SortByCost()
+        {
+            _list = _list.OrderBy(u => u.Cost).ToList();
+        }
+        public void SortByCostDesc()
+        {
+            _list = _list.OrderByDescending(u => u.Cost).ToList();
+        }
         public void LoadView(int n)
         {
             _view.Clear();
