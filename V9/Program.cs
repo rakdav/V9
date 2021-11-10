@@ -26,7 +26,7 @@ namespace V9
             }
             MainController controller = new MainController(mainView, materials);
             controller.AddPagination();
-            controller.LoadView();
+            controller.LoadView(1);
             mainView.ShowDialog();
         }
     }

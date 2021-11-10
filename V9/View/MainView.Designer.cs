@@ -86,7 +86,7 @@ namespace V9
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 402);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(600, 0, 0, 0);
+            this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(500, 0, 0, 0);
             this.flowLayoutPanel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.flowLayoutPanel2.Size = new System.Drawing.Size(800, 48);
             this.flowLayoutPanel2.TabIndex = 2;

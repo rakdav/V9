@@ -31,17 +31,14 @@ namespace V9.Controller
 
         public void AddPagination()
         {
-            for (int i = 1; i <= count; i++)
-                _view.AddPage(i);
+            for (int i = 0; i <= count+1; i++)
+            {
+                if (i == 0) _view.AddLeftRight("<");
+                else if(i==count+1) _view.AddLeftRight(">");
+                else _view.AddPage(i);
+            }
         }
-        public void LoadView()
-        {
-            //foreach (Material item in _list)
-            //{
-            //    _view.AddMatirial(item);
-            //}
-            LoadView(1);
-        }
+
         public void LoadView(int n)
         {
             _view.Clear();

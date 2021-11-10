@@ -13,6 +13,7 @@ namespace V9.Controller
         void Clear();
         void AddMatirial(Material material);
         void AddPage(int n);
+        void AddLeftRight(string text);
         void UpdateWithChangedMatirial(Material material);
         void RemoveMaterial(Material material);
     }

@@ -41,6 +41,14 @@ namespace V9
             linkLabel.LinkClicked+= this.addFiveMaterial;
             this.flowLayoutPanel2.Controls.Add(linkLabel);
         }
+        public void AddLeftRight(string text)
+        {
+            LinkLabel linkLabel = new LinkLabel();
+            linkLabel.Text = text;
+            linkLabel.Size = new Size(10, 50);
+            linkLabel.LinkClicked += this.addFiveMaterial;
+            this.flowLayoutPanel2.Controls.Add(linkLabel);
+        }
         private void addFiveMaterial(object sender, LinkLabelLinkClickedEventArgs e)
         {
             int n = int.Parse((sender as LinkLabel).Text);
