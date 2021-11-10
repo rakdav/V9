@@ -22,7 +22,6 @@ namespace V9.Controller
         public void Load()
         {
             this.view.Title = material.Title;
-           // this.view.Supliers = material.Supplier;
             this.view.MaterialTypeProperties = material.MaterialTypeID;
             this.view.MinCount = material.MinCount;
             this.view.CountInStock = material.CountInStock;
@@ -31,7 +30,6 @@ namespace V9.Controller
         private void updateUserWithViewValues(Material material)
         {
             material.Title=this.view.Title;
-           // material.Supplier=this.view.Supliers;
             material.MaterialTypeID=this.view.MaterialTypeProperties;
             material.MinCount= this.view.MinCount;
             material.CountInStock= this.view.CountInStock;
