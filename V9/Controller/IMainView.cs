@@ -12,6 +12,7 @@ namespace V9.Controller
         void SetController(MainController controller);
         void Clear();
         void AddMatirial(Material material);
+        void AddPage(int n);
         void UpdateWithChangedMatirial(Material material);
         void RemoveMaterial(Material material);
     }

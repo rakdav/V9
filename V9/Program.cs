@@ -25,6 +25,7 @@ namespace V9
                 materials = db.Material.ToList();
             }
             MainController controller = new MainController(mainView, materials);
+            controller.AddPagination();
             controller.LoadView();
             mainView.ShowDialog();
         }

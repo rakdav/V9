@@ -30,9 +30,22 @@ namespace V9
 
         public void Clear()
         {
-            this.Controls.Clear();
+            this.flowLayoutPanel1.Controls.Clear();
         }
 
+        public void AddPage(int n)
+        {
+            LinkLabel linkLabel = new LinkLabel();
+            linkLabel.Text = n.ToString();
+            linkLabel.Size = new Size(20,50);
+            linkLabel.LinkClicked+= this.addFiveMaterial;
+            this.flowLayoutPanel2.Controls.Add(linkLabel);
+        }
+        private void addFiveMaterial(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            int n = int.Parse((sender as LinkLabel).Text);
+            controller.LoadView(n);
+        }
         public void RemoveMaterial(Material material)
         {
             throw new NotImplementedException();
@@ -52,5 +65,6 @@ namespace V9
         {
 
         }
+
     }
 }
