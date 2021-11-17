@@ -14,8 +14,8 @@ namespace V9.Controller
         void Show(Material material);
         string MaterialTypeProperties { get; set; }
         string Title { get; set; }
-        double MinCount { get; set; }
-        double? CountInStock { get; set; }
+        double MinCount { set; }
+        double? CountInStock {  set; }
         ICollection<Supplier> Supliers { get; set; }
     }
 }

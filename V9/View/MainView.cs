@@ -17,18 +17,22 @@ namespace V9
     {
         MainController controller;
         private int n;
+        List<MaterialView> mviews;
         public MainView()
         {
             InitializeComponent();
             n = 1;
             sortBy.SelectedIndex = 0;
+            mviews = new List<MaterialView>();
         }
 
         public void AddMatirial(Material material)
         {
-            MaterialView materialView = new MaterialView();
+            MaterialView materialView = new MaterialView(material);
+            MaterialController materialController = new MaterialController(materialView,this, material);
             materialView.Show(material);
             this.flowLayoutPanel1.Controls.Add(materialView);
+            mviews.Add(materialView);
         }
 
         public void Clear()
@@ -78,9 +82,13 @@ namespace V9
                 controller.LoadView(n);
             }
         }
-        public void RemoveMaterial(Material material)
+        public void ChangeVisible()
         {
-            throw new NotImplementedException();
+            this.btChangeMinCount.Visible = true;
+        }
+        public void RemoveMaterial(MaterialView material)
+        {
+            this.flowLayoutPanel1.Controls.Remove(material);
         }
 
         public void SetController(MainController _controller)
@@ -93,10 +101,6 @@ namespace V9
             throw new NotImplementedException();
         }
 
-        private void MainView_Load(object sender, EventArgs e)
-        {
-
-        }
         private void SortMethod()
         {
             if (sortBy.SelectedIndex == 1)
@@ -161,7 +165,54 @@ namespace V9
         }
         public void setTitle(int all,int otbor)
         {
-            this.Text = "Черновик " + otbor + " из " + all;
+           this.toolStripStatusLabel1.Text =otbor + " из " + all;
+        }
+
+        private void btChangeMinCount_Click(object sender, EventArgs e)
+        {
+            ChangeMinCount change = new ChangeMinCount();
+            if (change.ShowDialog() == DialogResult.OK)
+            {
+                foreach (MaterialView mv in mviews)
+                {
+                    MaterialController controller = mv.getController();
+                    if (controller.isActive)
+                    {
+                        mv.MinCount = int.Parse(change.MinCount.Text);
+                        Material material = controller.GetMaterial();
+                        material.MinCount = int.Parse(change.MinCount.Text);
+                        controller.updateUserWithViewValues(material);
+                    }
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddEditMaterialView view = new AddEditMaterialView();
+            view.Visible = false;
+            Material material = new Material();
+            AddEditController controller = new AddEditController(view,material);
+            if(view.ShowDialog()==DialogResult.OK)
+            {
+                material.Title = view.Title;
+                material.MinCount = view.MinCount;
+                material.MaterialTypeID = view.MaterialTypeId;
+                material.Image = view.ImagePath;
+                material.Unit = view.Unit;
+                material.Cost = view.Cost;
+                material.CountInPack = view.CountInPack;
+                material.CountInStock = view.CountInStock;
+                material.Description = view.Description;          
+                controller.AddMaterial(view.getSuplier());
+                AddMatirial(material);
+            } 
+            else if(view.ShowDialog()==DialogResult.Yes)
+            {
+                MaterialView materialView = new MaterialView(material);
+                MaterialController materialController = new MaterialController(materialView, this, material);
+                RemoveMaterial(materialView);
+            }
         }
     }
 }

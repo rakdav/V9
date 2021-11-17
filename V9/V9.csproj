@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\AddEditController.cs" />
+    <Compile Include="Controller\IAddEditView.cs" />
     <Compile Include="Controller\IMainView.cs" />
     <Compile Include="Controller\IMaterialView.cs" />
     <Compile Include="Controller\MainController.cs" />
@@ -75,6 +77,24 @@
     <Compile Include="Model\Shop.cs" />
     <Compile Include="Model\Supplier.cs" />
     <Compile Include="Model\sysdiagrams.cs" />
+    <Compile Include="View\AddEditMaterialView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddEditMaterialView.Designer.cs">
+      <DependentUpon>AddEditMaterialView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddSuplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddSuplier.Designer.cs">
+      <DependentUpon>AddSuplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChangeMinCount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ChangeMinCount.Designer.cs">
+      <DependentUpon>ChangeMinCount.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MainView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +119,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\AddEditMaterialView.resx">
+      <DependentUpon>AddEditMaterialView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AddSuplier.resx">
+      <DependentUpon>AddSuplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ChangeMinCount.resx">
+      <DependentUpon>ChangeMinCount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>

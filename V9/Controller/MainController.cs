@@ -15,7 +15,6 @@ namespace V9.Controller
         private IList<Material> _list;
         private int count;
         private IList<Material> temp;
-        private int all, otbor;
         public MainController(IMainView view, IList<Material> list)
         {
             _view = view;
@@ -48,7 +47,7 @@ namespace V9.Controller
         }
         public void SortByName()
         {
-            _list=_list.OrderBy(u => u.Title).ToList();
+            _list = _list.OrderBy(u => u.Title).ToList();
         }
         public void SortByNameDesc()
         {
